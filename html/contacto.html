@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Contacto</title>
+    <script  src="/scrips/app.js"></script>
+    <script src="https://kit.fontawesome.com/0c273bd24b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="header-logo"><a href="/index.html"><img src="../styles/logo.jpg"  width="100" height="100" alt=""></a></div>
+        <input type="checkbox" id="menu-check">
+        <label id="menu" for="menu-check">
+            <span id="menu-abrir"><i class="fa-solid fa-bars"></i></span>
+            <span id="menu-cerrar">X</span>
+        </label>
+        <nav class="header-menuBar">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li> 
+               <li> <a href="/html/ventas.html">Ventas</a></li>
+               <li><a href="/html/acercaDeNosotros.html">Nosotros</a></li> 
+               <li><a href="/html/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main >
+        
+        <div class="fondoContacto">
+            <form id="form" action="https://formspree.io/f/xjvddbkr" method="POST" >
+                <h2>CONTACTO</h2>
+                       <input type="text"  name="" id="nombre" required placeholder="escriba aqui su nombre">
+                       <input type="email" name="" id="email"  placeholder="escriba aqui su email" >
+                       <textarea name="text" id="mensaje" placeholder="Escriba sus cometarios"></textarea>
+                       <button  type="submit"  id="boton"onclick=validarDatos() >ENVIAR</button>
+                      <!-- <input type="submit" id="boton"onclick=validarDatos()   id="boton"> -->
+                    
+                       
+                </form>
+        </div>
+        <div class="about-us-container">
+            <h3>¿Donde nos encontramos?</h3>
+        </div>
+        <div class="iframe-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13137.678795336626!2d-58.46893751439264!3d-34.59354721737743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA!5e0!3m2!1ses!2sar!4v1684715893786!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <ul class="social-icons">
+              <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+            <p class="copyright">&copy; 2023 Venta de Productos. Todos los derechos reservados.</p>
+          </div>
+        </footer>
+    <script>
+        const $form = document.querySelector('#form')
+          $form.addEventListener('submit',handleSubmit)
+          async function handleSubmit(event) {
+          event.preventDefault()
+          const from=new FormData(this)
+          const response=await fetch(this.action, {
+           method: this.method,
+           body:from,
+           headers:{
+               'Accept': 'application/json'
+           }
+          })
+   
+          if (response.ok){
+           this.reset()
+           alert('Gracias por contactarse,en breve estaremos en contacto')
+          }
+       }
+   
+       </script>
+</body>
+</html>
